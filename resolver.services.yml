@@ -1,0 +1,17 @@
+services:
+  resolver.class_resovler_one:
+    public: false
+    class: Drupal\resolver_decorated_test\ClassResolverOne
+    decorates: class_resolver
+    arguments: ['@resolver_decorated_test.class_resovler_one.inner']
+    decoration_priority: 40
+    calls:
+      - [setContainer, ['@service_container']]
+  resolver.class_resovler_two:
+    public: false
+    class: Drupal\resolver_decorated_test\ClassResolverTwo
+    decorates: class_resolver
+    arguments: ['@resolver_decorated_test.class_resovler_two.inner']
+    decoration_priority: 50
+    calls:
+      - [setContainer, ['@service_container']]
